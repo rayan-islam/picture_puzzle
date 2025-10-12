@@ -6,6 +6,7 @@ __pycache__/
 .Python
 
 # Virtual environments
-myenv/
+treasure-hunt/myenv/
+**/venv/
 .env/
 .envrc/

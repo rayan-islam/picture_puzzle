@@ -1,0 +1,42 @@
+SET TRANSACTION READ WRITE;
+INSERT INTO "user"(id, last_time, level_completed, name, pwd, role, token)
+VALUES ('admin', NOW(), 0, 'অ্যাডমিন', 'ff11ad1c2757e5609e8536c7f11429f9ece77d27f2e394355cce6bb96d0a1ab3', ''ADMIN', 'AaB0bCcD0dZ');
+INSERT INTO "user"(id, last_time, level_completed, name, pwd, role, token)
+VALUES ('c_d_i', NOW(), 0, 'Completely Dead Inside', '4d8fb17fda494cf36dbf9bf36ed5a39c2c34b465c7d0cd0222af9f983940e095', 'TEAM', 'AaB0bCcD0dZ');
+INSERT INTO "user"(id, last_time, level_completed, name, pwd, role, token)
+VALUES ('b_h', NOW(), 0, 'Blood_Hound', 'e0014158432aefc7f8c4bec07ca362194e8c7749015e624a3f52bfb4f5d01dec', 'TEAM', 'AaB0bCcD0dZ');
+INSERT INTO "user"(id, last_time, level_completed, name, pwd, role, token)
+VALUES ('b_s_l', NOW(), 0, 'Boom Shaka Laka', '200b8f10699cf606c2b4671703652b690e8489ae73a07d4493e20328c6615304', 'TEAM', 'AaB0bCcD0dZ');
+INSERT INTO "user"(id, last_time, level_completed, name, pwd, role, token)
+VALUES ('t_a_f', NOW(), 0, 'Team Ace Foragers', '3f6f94fac7103a52c74b8e7b2bac8873b4863e92f8949bd49feb7572ff50902b', 'TEAM', 'AaB0bCcD0dZ');
+INSERT INTO "user"(id, last_time, level_completed, name, pwd, role, token)
+VALUES ('o_g_h', NOW(), 0, 'Orion the Great Hunters', '061897a3252d8166b8a413e74efe82590422bab7259736e41d045c564ade04fe', 'TEAM', 'AaB0bCcD0dZ');
+INSERT INTO "user"(id, last_time, level_completed, name, pwd, role, token)
+VALUES ('m', NOW(), 0, 'মূলা', '38c45efe3ce8a454756964e96838d10b3ea23c998061b64b68f0e098c1f20a3b', 'TEAM', ''AaB0bCcD0dZ');
+INSERT INTO "user"(id, last_time, level_completed, name, pwd, role, token)
+VALUES ('l', NOW(), 0, 'Leopard', '1c19ead3e214f51243f06907e7fdaaf12175f71099c9549c4d200474e95fadd0', 'TEAM', 'AaB0bCcD0dZ');
+INSERT INTO "user"(id, last_time, level_completed, name, pwd, role, token)
+VALUES ('kbm', NOW(), 0, 'কিংকর্তব্যবিমূঢ়', 'd578e9ae6cc15227c91033af497a09448c4487b0d70b7a9a6b43a616cd2a043  3b', 'TEAM', 'AaB0bCcD0dZ');
+INSERT INTO "user"(id, last_time, level_completed, name, pwd, role, token)
+VALUES ('ura', NOW(), 0, 'Urrraaaaa', '7d781f20739096281a64ed18b03269ab493bfc2e86979d99a9aa473ec756fab1', 'TEAM', 'AaB0bCcD0dZ');
+INSERT INTO "user"(id, last_time, level_completed, name, pwd, role, token)
+VALUES ('jb', NOW(), 0, 'জ্বিনের বাদশাহ', '7559fd214f693237ba09dc5dbbd30e40b49b928bb082c7f3f04b21d98574e412'', 'TEAM', 'AaB0bCcD0dZ');
+INSERT INTO "user"(id, last_time, level_completed, name, pwd, role, token)
+VALUES ('h', NOW(), 0, 'HUNTER-1009', '6f369adf78251406e7614ea7d2266b5264bd7a2489204541dba53aea9c583fad', 'TEAM', 'AaB0bCcD0dZ');
+INSERT INTO "user"(id, last_time, level_completed, name, pwd, role, token)
+VALUES ('tj', NOW(), 0, 'Trojan Horse', '4150d283c7fd294898c1bb82a5dfb837655c57ab6cc4d2194d3ab6215b7f5992', 'TEAM', 'AaB0bCcD0dZ');
+INSERT INTO "user"(id, last_time, level_completed, name, pwd, role, token)
+VALUES ('tp', NOW(), 0, 'Team Possible', '4441087f7c49f61b723dbd950fd2ca15f42819c409d024f4572b5decac934495', 'TEAM', 'AaB0bCcD0dZ');
+INSERT INTO "user"(id, last_time, level_completed, name, pwd, role, token)
+VALUES ('the', NOW(), 0, 'The Hawk eyes', '383e8783ee07ebc942b66a6c773990e34630b3a03826408dd0165d531d1e6152', 'TEAM', 'AaB0bCcD0dZ');
+INSERT INTO "user"(id, last_time, level_completed, name, pwd, role, token)
+VALUES ('pt', NOW(), 0, 'Phantom Troupe', 'b70876baa08cf5b50b28573d5fefbba80a5eb1091f4bcdf122a2d1687c4ff073', 'TEAM', 'AaB0bCcD0dZ');
+INSERT INTO "user"(id, last_time, level_completed, name, pwd, role, token)
+VALUES ('cub', NOW(), 0, 'Confused unga bunga', '4e864583a59cdf5054a84edabbf53bd1e0f6f2f0016dd5d1860e2dc74180ea3e', 'TEAM', 'AaB0bCcD0dZ');
+INSERT INTO "user"(id, last_time, level_completed, name, pwd, role, token)
+VALUES ('vlk', NOW(), 0, 'The Valkyries', '1c597df1a03863c956680ca66ed34dc5c852c8a9372d2a8c9e8f0df2be4e31d5', 'TEAM', 'AaB0bCcD0dZ');
+INSERT INTO "user"(id, last_time, level_completed, name, pwd, role, token)
+VALUES ('bo', NOW(), 0, 'Black Order', 'a053398ea9fce25c342638e876296ddd3f199885d001fd2ffcc7c96db028bfb3', 'TEAM', 'AaB0bCcD0dZ');
+INSERT INTO "user"(id, last_time, level_completed, name, pwd, role, token)
+VALUES ('n', NOW(), 0, 'Noobs', 'ecc5273c59faba8312af0c4e5c94615928a69e96ceec34ea422eca37f5f9af48', 'TEAM', 'AaB0bCcD0dZ');
+COMMIT;

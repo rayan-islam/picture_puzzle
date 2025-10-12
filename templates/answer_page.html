@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/style.css')}}">
+    <title>Answer Page</title>
+</head>
+
+<body>
+    <header>
+        <nav class="admin">
+            <ul class="navigation-list admin">
+                <li>
+                    <a href="/admin_dashboard">Dashboard</a>
+                </li>
+                <li>
+                    <a href="/team_reg">Team Reg</a>
+                </li>
+                <li>
+                    <a href="/logout">Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div align="center">
+        <div class="answerform">
+            <form action="/admin_dashboard" method="POST">
+                <div class="form-container">
+                    <input type="text" id="teamname" name="teamname" placeholder="Teamname">
+                    &nbsp;
+                    <input type="text" id="level" name="level" placeholder="Enter Level">
+                    <input class="button admin" type="submit" title="Get answers" value="Search">
+                </div>
+            </form>
+        </div>
+
+        <br>
+        <h2>All answers</h2>
+        <table class="content-table admin">
+            <thead>
+                <tr>
+                    <th>Serial</th>
+                    <th>Level</th>
+                    <th>Team</th>
+                    <th>Answers</th>
+                </tr>
+            </thead>
+            {%for item in answer_list%}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.level_name}}</td>
+                <td>{{item.team}}</td>
+                <td>{{item.answer}}</td>
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+</body>
+
+</html>

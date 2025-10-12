@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Team Registry</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/style.css')}}">
+</head>
+
+<body>
+    <header>
+        <nav class="admin">
+            <ul class="navigation-list admin">
+                <li>
+                    <a href="/admin_dashboard">Dashboard</a>
+                </li>
+                <li>
+                    <a href="/team_reg">Team Reg</a>
+                </li>
+                <li>
+                    <a href="/logout">Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="login-box">
+        <h2>Team Registration</h2>
+        <form action="/team_reg" method="POST">
+            <div class="textbox">
+                <input type="text" id="teamid" name="teamid" placeholder="Team ID">
+            </div>
+            <div class="textbox">
+            <div class="textbox">
+                <input type="text" id="teamname" name="teamname" placeholder="Team name">
+            </div>
+            <div class="textbox">
+                <input type="password" id="password" name="password" placeholder="Password">
+            </div>
+            <div class="textbox">
+                <input type="text" id="token" name="token" placeholder="Team Token">
+            </div>
+            <div class="button-container"> <!-- Wrap the button in a div -->
+                <input class="button admin" type="submit" title="Register" value="Register">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
