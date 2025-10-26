@@ -2,7 +2,7 @@ import time
 import hashlib
 from dotenv import load_dotenv
 import os
-from flask import Flask, request, redirect, url_for, send_from_directory, abort
+from flask import Flask, request, redirect, flash, url_for, send_from_directory, abort
 from flask import render_template
 from flask_login import (
     UserMixin,
@@ -85,6 +85,7 @@ def unauthorized():
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "GET":
+        print(current_user)
         if current_user.is_authenticated:
             return redirect(url_for("puzzle"))
         else:
@@ -106,7 +107,7 @@ def index():
             return redirect(url_for("index"))
 
     else:
-        return "Backend FUCKED UP badly"
+        return "Backend messed UP badly"
 
 
 @app.route("/puzzle_image")
@@ -114,7 +115,7 @@ def index():
 def puzzle_image():
     # Only allow access if the user meets the conditions (e.g., logged in, etc.)
     token = current_user.token
-    TOTAL_QUIZ = len(token)
+    TOTAL_QUIZ = db.session.query(Quiz).count()
     print(TOTAL_QUIZ)
     current_level = current_user.level_completed
     print(current_level)
@@ -122,7 +123,7 @@ def puzzle_image():
     if current_level >= TOTAL_QUIZ:
         abort(404)
     else:
-        current_puzzle_id = token[current_level]
+        current_puzzle_id = "P"+str(current_level + 1)
         print(current_puzzle_id)
         try:
             # return send_from_directory('puzzles', f"{current_puzzle_id}.png")
@@ -138,7 +139,8 @@ def puzzle():
     # print(TOTAL_QUIZ)
 
     token = current_user.token
-    TOTAL_QUIZ = len(token)
+    print(current_user.name)
+    TOTAL_QUIZ = db.session.query(Quiz).count()
     print(TOTAL_QUIZ)
     current_level = current_user.level_completed
     print(current_level)
@@ -146,7 +148,7 @@ def puzzle():
     if request.method == "POST":
         print("POST")
 
-        if current_level >= TOTAL_QUIZ:
+        if current_level+1 >= TOTAL_QUIZ:
             print("POST + CURRENT_LEVEL == TOTAL_QUIZ")
             return redirect(url_for("congrats"))
 
@@ -165,14 +167,17 @@ def puzzle():
                                 )
                 db.session.add(submitted)
 
-                current_puzzle_id = token[current_level]
+                current_puzzle_id = "P"+str(current_level + 1)
                 print("Current puzzle id:", current_puzzle_id)
 
                 current_puzzle = Quiz.query.filter_by(id=current_puzzle_id).first()
 
+                print(current_puzzle.answer.strip().lower())
+                print(answer.strip().lower())
                 print(current_puzzle)
-                if current_puzzle and current_puzzle.answer.strip().lower() == answer.strip().lower():
+                if current_puzzle and current_puzzle.answer.strip().lower().replace(" ", "") == answer.strip().lower():
                     print("inside this statement")
+                    
                     stmt = (
                             update(User)
                             .where(User.id == current_user.id)
@@ -196,14 +201,26 @@ def puzzle():
 
     elif request.method == "GET":
 
-        if current_user.level_completed >= TOTAL_QUIZ:
+        if current_user.level_completed >= TOTAL_QUIZ-1:
             print("GET + CURRENT_LEVEL == TOTAL_QUIZ")
             return redirect(url_for("congrats"))
         else:
             print("GET ELSE")
             print("Current User Level Completed: ", current_user.level_completed)
 
-            current_puzzle_id = token[current_level]
+            ansCount = db.session.query(Answers).filter_by(team=current_user.name).filter_by(level_name=current_level).count()
+            print(ansCount)
+            if(ansCount == 0 and current_user.level_completed>0):
+                flash('<img alt="You can do it" src="/static/doge.png" width="25"> Level upgraded!', "success")
+            elif(ansCount == 6):
+                flash('<img alt="You can do it" src="/static/doge.png" width="25"> frustrated?', "success")
+            elif(ansCount == 10):
+                flash('<img alt="You can do it" src="/static/doge.png" width="25"> Try korte korte to haapiye gelen, ektu pani khan', "success")
+            elif(ansCount == 15):
+                flash('<img alt="You can do it" src="/static/doge.png" width="25"> Ektu rest nen!', "success")
+            elif(ansCount == 20):
+                flash('<img alt="You can do it" src="/static/doge.png" width="25"> vai onno vabe chinta koren', "success")        
+            current_puzzle_id = "P"+str(current_level + 1)
             print("Current puzzle id:", current_puzzle_id)
 
             current_puzzle = Quiz.query.filter_by(id=current_puzzle_id).first()
@@ -235,8 +252,8 @@ def logout():
 @app.route("/congrats")
 @login_required
 def congrats():
-    TOTAL_QUIZ = len(current_user.token)
-    if TOTAL_QUIZ == current_user.level_completed:
+    TOTAL_QUIZ = db.session.query(Quiz).count()
+    if TOTAL_QUIZ == current_user.level_completed + 1:
         f_link = Quiz.query.filter_by(id="Z").first().link
         return render_template("congrats.html", image_link=f_link)
     return redirect(url_for("puzzle_image"))
@@ -297,7 +314,7 @@ def team_reg():
 
             return redirect(url_for("leaderboard"))
         else:
-            return "Backend fucked up badly !"
+            return "Backend messed up badly !"
     else:
         return redirect(url_for("index"))
 
@@ -347,4 +364,4 @@ def admin_dashboard():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
